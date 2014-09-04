@@ -1,0 +1,10 @@
+100 0 0 0 Player1
+90 0 0 0 Player2
+80 0 0 0 Player3
+70 0 0 0 Player4
+60 0 0 0 Player5
+50 0 0 0 Player6
+40 0 0 0 Player7
+30 0 0 0 Player8
+20 0 0 0 Player9
+10 0 0 0 Player10
