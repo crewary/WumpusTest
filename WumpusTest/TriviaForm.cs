@@ -36,6 +36,7 @@ namespace WumpusTest2010
             correctBox.Text = "Number Correct: " + correct + "    Number Wrong: " + fails;
         }
 
+        //closes form  depending on number of questions and tells whether win or lose happened for trivia
         public void shouldClose()
         {
             if (questionsToAnswer == 1)
@@ -90,13 +91,15 @@ namespace WumpusTest2010
             System.Threading.Thread.Sleep(250);
             this.Close();
         }
+
+        //get to update score/coins/arrows
         public bool getWasPass()
         {
             return wasPass;
         }
 
         /// <summary>
-        /// 
+        /// shuffles questions and displays for player to answer
         /// </summary>
         /// <returns>int 0-2; the correct answer</returns>
         public void oneQuestion()
@@ -147,6 +150,7 @@ namespace WumpusTest2010
             
         }
 
+        //answer buttons 1-3 below
         private void button1_Click(object sender, EventArgs e)
         {
             if (correctNumber == 0)

@@ -33,6 +33,7 @@ namespace WumpusTest2010
             trivia = new TriviaTry();
             pictureBox3.Hide();
            
+            //starts up form and displays starting options
             //LabelBox.Text = "Enter Player Name below and hit button to start";
             inputBox.Hide();
             //this.updateScoreTracker();
@@ -60,13 +61,13 @@ namespace WumpusTest2010
         {
             if (arrows < 1)
             {
-                if (!dialogue.Text.Equals("You win."))
+                if (!dialogue.Text.Equals("You win."))  //for when you shoot wumpus with last arrow, the text box displays this -->you win
                 {
-                    dialogue.Text = "You lose."; // help
+                    dialogue.Text = "You lose."; // help  
                 }
             }
             score = high.CalculateScore(trivia.getCoins(), arrows, turns);
-            ScoreTracker.Text = "Score: " + score + "   Coins: " + trivia.getCoins() + "   Arrows: " + arrows + "   Turns: " + turns;
+            ScoreTracker.Text = "Score: " + score + "   Coins: " + trivia.getCoins() + "   Arrows: " + arrows + "   Turns: " + turns;   //updates player with their data
         }
 
         private void room_TextChanged(object sender, EventArgs e)
@@ -74,6 +75,7 @@ namespace WumpusTest2010
 
         }
 
+        //updates options on buttons and screen for player to decide actions
         public void updateButtons(int currentRoom)
         {
             if (trivia.getCoins() == 100)
@@ -82,7 +84,7 @@ namespace WumpusTest2010
             }
             if (arrows == 0)
             {
-                if (!dialogue.Text.Equals("You win."))
+                if (!dialogue.Text.Equals("You win."))      //this is used so many times... should've made method
                 {
                     dialogue.Text = "You lose."; // help
                 }
@@ -98,14 +100,15 @@ namespace WumpusTest2010
                     dialogue.Text = "You lose."; // help
                 }
             }
-            int roomIn = map.getRoom();
+            int roomIn = map.getRoom();     
+            //checks room to update dialogue box
             if (!dialogue.Text.Equals("You lose.") && !dialogue.Text.Equals("You win."))
             {
                 dialogue.Text = map._Cave.getWarning(roomIn);
             }
             if (map._Cave.wumpusInRoom(currentRoom))
             {
-                if (trivia.fiveQuestions())
+                if (trivia.fiveQuestions()) //if wumpus is in room and 5 trivia question test is passed, prep win
                 {
                     map._Cave.moveWumpus(currentRoom);
                     pictureBox3.Show();
@@ -138,7 +141,10 @@ namespace WumpusTest2010
             int[] possibleSwitch = map._Cave.possibleRooms(currentRoom);
 
             int possibleLength = 0;
-            for (int i = 0; i < possibleSwitch.Length; i++)
+            
+            //this is for updating the 3 buttons with possible rooms to switch/shoot into
+            //counts how many buttons we need (hides unclickable ones)
+            for (int i = 0; i < possibleSwitch.Length; i++)     
             {
                 if (possibleSwitch[i] != -1)
                 {
@@ -151,6 +157,7 @@ namespace WumpusTest2010
                 possible[i] = possibleSwitch[i];
             }
 
+            //below hides and shows the options and preps for user decision
             if (possible.Length == 1)
             {
                 option1.Show();
@@ -212,6 +219,12 @@ namespace WumpusTest2010
             }
         }
 
+        /// <summary>
+        /// checks for hazards and affects the player accordingly
+        /// running into a pit sets the player back at the intial room if you win trivia, else you lose game
+        /// bats move the player to a random room
+        /// </summary>
+        /// <param name="currentRoom"></param>
         public void checkHazards(int currentRoom)
         {
             if (map._Cave.pitInRoom(currentRoom))
@@ -239,6 +252,8 @@ namespace WumpusTest2010
             }
         }
 
+        //below are the 3 button options that can be clicked
+        //they run through the checks for events in the room and updates the scores/prompts trivia accordingly
         private void option1_Click(object sender, EventArgs e)
         {
             int newRoom = Int16.Parse(option1.Text);
@@ -296,6 +311,7 @@ namespace WumpusTest2010
 
         }
 
+        //starts trivia for buying arrows
         private void buyArrows_Click(object sender, EventArgs e)
         {
             turns++;
@@ -313,6 +329,8 @@ namespace WumpusTest2010
 
         }
 
+        //below are the options for shooting in adjacent rooms
+        //you know when to shoot when you smell a wumpus, but you don't know which direction
         private void shoot1_Click(object sender, EventArgs e)
         {
             turns++;
@@ -359,6 +377,7 @@ namespace WumpusTest2010
             }
         }
 
+        //sells secret for answering a three trivia correctly
         private void buySecret_Click(object sender, EventArgs e)
         {
             turns++;
@@ -410,6 +429,7 @@ namespace WumpusTest2010
 
         }
 
+        //hides starting picture/intro and starts game
         private void button2_Click(object sender, EventArgs e)
         {
             pictureBox1.Hide();

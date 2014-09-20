@@ -48,7 +48,6 @@ C:\Users\Tom\Documents\Visual Studio 2010\Projects\WumpusTest\WumpusTest\obj\x86
 C:\Users\Tom\Documents\Visual Studio 2010\Projects\WumpusTest\WumpusTest\obj\x86\Debug\WumpusTest2010.Form2.resources
 C:\Users\Tom\Documents\Visual Studio 2010\Projects\WumpusTest\WumpusTest\obj\x86\Debug\WumpusTest2010.Form3.resources
 C:\Users\Tom\Documents\Visual Studio 2010\Projects\WumpusTest\WumpusTest\obj\x86\Debug\WumpusTest2010.Form4.resources
-C:\Users\Tom\Documents\Visual Studio 2010\Projects\WumpusTest\WumpusTest\obj\x86\Debug\WumpusTest2010.HighScores.resources
 C:\Users\Tom\Documents\Visual Studio 2010\Projects\WumpusTest\WumpusTest\obj\x86\Debug\WumpusTest2010.MasterForm.resources
 C:\Users\Tom\Documents\Visual Studio 2010\Projects\WumpusTest\WumpusTest\obj\x86\Debug\WumpusTest.Properties.Resources.resources
 C:\Users\Tom\Documents\Visual Studio 2010\Projects\WumpusTest\WumpusTest\obj\x86\Debug\WumpusTest2010.TriviaForm.resources
@@ -83,3 +82,4 @@ C:\Users\Tyler\Downloads\WumpusTest\WumpusTest\WumpusTest\obj\x86\Debug\WumpusTe
 C:\Users\Tyler\Downloads\WumpusTest\WumpusTest\WumpusTest\obj\x86\Debug\WumpusTest2010.TriviaForm.resources
 C:\Users\Tyler\Downloads\WumpusTest\WumpusTest\WumpusTest\obj\x86\Debug\WumpusTest2010.zGameForm.resources
 C:\Users\Tyler\Downloads\WumpusTest\WumpusTest\WumpusTest\obj\x86\Debug\WumpusTest.csproj.GenerateResource.Cache
+C:\Users\Tom\Documents\Visual Studio 2010\Projects\WumpusTest\WumpusTest\obj\x86\Debug\WumpusTest2010.HighScoresForm.resources

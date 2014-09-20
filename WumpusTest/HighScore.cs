@@ -9,12 +9,11 @@ namespace WumpusTest2010
     {
         private static String startPath = System.IO.Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "WumpusTest");
         //@"C:\Users\s-thnguyen\Documents\Visual Studio 2010\Projects\WumpusTest";
-        public static int numberOfHighScores = 10; //dont change this randomly.. fix/delete Highscores.txt as well
-        //public String startPath;
-        private String[,] highScoreParts;
-        private static String fileName = "tempHighScores.txt";
+        public static int numberOfHighScores = 10;  //dont change this randomly.. fix/delete Highscores.txt as well
+        private String[,] highScoreParts;   //Rectangular String array holding parts of highsore [numberOfHighScores] x [score, coins, arrows, turn, name]
+        private static String fileName = "tempHighScores.txt";  //write new scores here and rename to HighScores.txt
         private static String scoresFolderPath = System.IO.Path.Combine(startPath, "HighScores");
-        private static String scoresFilePath = System.IO.Path.Combine(scoresFolderPath, "HighScores.txt");
+        private static String scoresFilePath = System.IO.Path.Combine(scoresFolderPath, "HighScores.txt");  //contains old scores
         private static String filePath = System.IO.Path.Combine(scoresFolderPath, fileName);
 
         public HighScore()
@@ -33,7 +32,9 @@ namespace WumpusTest2010
             this.CheckHighScoresPresent();
 
             String[,] scoreStuff = new String[numberOfHighScores, 5];
-            String[] lines = System.IO.File.ReadAllLines(scoresFilePath);
+            String[] lines = System.IO.File.ReadAllLines(scoresFilePath);   //unseparated String containing player data
+
+            //splits the lines array and places invidual scores and name into scoreStuff cells to return later
             for (int i = 0; i < numberOfHighScores; i++)
             {
                 String[] line = lines[i].Split((string[])null, StringSplitOptions.RemoveEmptyEntries);
@@ -48,7 +49,9 @@ namespace WumpusTest2010
                     playerName += line[p] + " ";
                 }
                 scoreStuff[i, 4] = playerName;
-                //comment out later
+
+                //Can Comment out
+                //diplay formatted array lines in console
                 Console.WriteLine("" + scoreStuff[i, 0] + " " + scoreStuff[i, 1] + " " + scoreStuff[i, 2] + " " + scoreStuff[i, 3] + " " + scoreStuff[i, 4]);
                 //
             }
@@ -89,10 +92,12 @@ namespace WumpusTest2010
 
             bool areWeDone = false;
             int counter = 0;
+
+            //checks player score against old scores and knocks off last player or will set up a false return for a non-highscore
             while (counter < numberOfHighScores && !areWeDone)
             {
                 String oldScoreString = "";
-                foreach (char c in oldScores[counter])
+                foreach (char c in oldScores[counter])  //gets the old scores to be compared against
                 {
                     if (!Char.IsDigit(c))
                     {
@@ -100,18 +105,20 @@ namespace WumpusTest2010
                     }
                     oldScoreString += c;
                 }
+
                 int oldScore = Int32.Parse(oldScoreString);
+
                 bool scorePlaced = false;
-                if (playerHighScore < oldScore && !scorePlaced)
+                if (playerHighScore < oldScore && !scorePlaced)     //checks if current player displaces highscores
                 {
-                    newScores[counter] = oldScores[counter];
+                    newScores[counter] = oldScores[counter];    //copies old highscore entry to new array when not displaced by current player
                     counter++;
-                    scorePlaced = true;
+                    scorePlaced = true;     //continue to check current player score through old scores
                 }
-                else if (playerHighScore >= oldScore && !scorePlaced)
+                else if (playerHighScore >= oldScore && !scorePlaced)   //current player score displaces highscores... knock last place out and copy rest of scores
                 {
-                    newScores[counter] = "" + playerHighScore + " " + coins + " " + arrows + " " + turns + " " + name;
-                    while ((counter + 1) < numberOfHighScores)
+                    newScores[counter] = "" + playerHighScore + " " + coins + " " + arrows + " " + turns + " " + name;  //String of current player's data formatted
+                    while ((counter + 1) < numberOfHighScores)      //copies all old scores over, excluding the knocked out score and sets up exit of while loop
                     {
                         newScores[counter + 1] = oldScores[counter];
                         counter++;
@@ -132,7 +139,7 @@ namespace WumpusTest2010
             {
                 System.IO.File.Delete(scoresFilePath);
             }
-            System.IO.File.Move(filePath, scoresFilePath); //rename file
+            System.IO.File.Move(filePath, scoresFilePath); //rename temp file to actual file
             return areWeDone;
         }
 
@@ -141,7 +148,7 @@ namespace WumpusTest2010
         /// </summary>
         public void openHighScoreForm()
         {
-            HighScores hs = new HighScores();
+            HighScoresForm hs = new HighScoresForm();
             hs.ShowDialog();
         }
 
@@ -163,7 +170,7 @@ namespace WumpusTest2010
             {
                 for (int i = 0; i < numberOfHighScores; i++)
                 {
-                    fillEmpty[i] = "0 0 0 0 Player" + (i + 1);
+                    fillEmpty[i] = "0 0 0 0 Player" + (i + 1);      //This array will have the format of the necessary amount of empty player scores written to the text file
                 }
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(filePath))
                 {
@@ -175,5 +182,6 @@ namespace WumpusTest2010
                 System.IO.File.Move(filePath, scoresFilePath); //rename file
             }
         }
+
     }
 }

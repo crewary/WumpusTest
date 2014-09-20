@@ -26,7 +26,7 @@ namespace WumpusTest2010
             high = new HighScore();
             trivia = new Trivia();
 
-            button1.Hide();
+            button1.Hide();     //options for picking cave number
             button2.Hide();
             button3.Hide();
             button4.Hide();
@@ -51,6 +51,7 @@ namespace WumpusTest2010
 
         }
 
+        //for testing
         private void ConstructorButton_Click(object sender, EventArgs e)
         {
             /*
@@ -76,6 +77,7 @@ namespace WumpusTest2010
             high.openHighScoreForm();
         }
 
+        //prompts player to pick a room/go back (start game button)
         private void button1_Click(object sender, EventArgs e)
         {
             System.Threading.Thread.Sleep(150);
@@ -111,11 +113,13 @@ namespace WumpusTest2010
             this.Close();
         }
 
+        //returns cave number picked to open game form with respective cave
         public int getCaveFromMasterForm()
         {
             return caveNumberFromMasterForm;
         }
 
+        //brings up help text and allows player to go back
         private void HelpButton_Click(object sender, EventArgs e)
         {
             System.Threading.Thread.Sleep(150);
@@ -128,6 +132,7 @@ namespace WumpusTest2010
             HelpText.Show();
         }
 
+        //brings player back to start prompt
         private void BackButton_Click(object sender, EventArgs e)
         {
             System.Threading.Thread.Sleep(150);
@@ -145,11 +150,13 @@ namespace WumpusTest2010
             button5.Hide();
         }
 
+        //this is not self explanatory
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //below are cave options to be clicked          //option 1 is above
         private void button2_Click(object sender, EventArgs e)
         {
             caveNumberFromMasterForm = 2;

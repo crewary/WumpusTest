@@ -1,6 +1,6 @@
 ﻿namespace WumpusTest2010
 {
-    partial class HighScores
+    partial class HighScoresForm
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // HighScoreBox
@@ -131,22 +131,22 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Player Name";
             // 
-            // button1
+            // CloseButton
             // 
-            this.button1.Location = new System.Drawing.Point(15, 205);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Close";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CloseButton.Location = new System.Drawing.Point(15, 205);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(75, 23);
+            this.CloseButton.TabIndex = 20;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
-            // HighScoreForm
+            // HighScoresForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 240);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.HighScoreBox);
             this.Controls.Add(this.TurnBox);
             this.Controls.Add(this.ArrowsBox);
@@ -157,8 +157,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "HighScoreForm";
-            this.Text = "HighScoreForm";
+            this.Name = "HighScoresForm";
+            this.Text = "HighScores";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,6 +176,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CloseButton;
     }
 }

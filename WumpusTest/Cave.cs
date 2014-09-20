@@ -28,7 +28,7 @@ namespace WumpusTest2010
         /// <returns></returns> they return true or false depending on whether or not a hazard is present
         public Boolean batsInRoom(int roomNum)
         {
-            return rooms[roomNum - 1].BatsPresent; 
+            return rooms[roomNum - 1].BatsPresent;      
         }
 
         public Boolean pitInRoom(int roomNum)

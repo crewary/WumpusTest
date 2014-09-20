@@ -54,9 +54,7 @@ namespace WumpusTest2010
             String[] answers = new String[3];
             for (int p = 1; p < 4; p++)
             {
-
                 answers[p - 1] = this.getQuestionsArray()[(numberWeAreOn - 1) * 4 + p];
-
             }
             return answers;
         }
@@ -71,6 +69,7 @@ namespace WumpusTest2010
             return coins;
         }
 
+        //This starts trivia over if we are nearing end of Trivia.txt (running out of questions)
         public void resetNumberWeAreOn()
         {
             if (numberWeAreOn >= 20)
@@ -79,15 +78,14 @@ namespace WumpusTest2010
             }
         }
 
-        public void subtractOneFromNumberWeAreOn()
-        {
-            numberWeAreOn--;
-        }
-
+        //opens triviaForm for 1-5 questions of trivia and returns whether or not player answered correctly
+        //uncomment if/else to see in console for testing purposes
+        //same for three below... could probably have taken an int instead
         public bool oneQuestions()
         {
             TriviaForm trivForm = new TriviaForm(1);
             trivForm.ShowDialog();
+            /*
             if (trivForm.getWasPass())
             {
                 Console.WriteLine("Was A Pass");
@@ -95,7 +93,7 @@ namespace WumpusTest2010
             else
             {
                 Console.WriteLine("Was A Fail");
-            }
+            }*/
             //Console.WriteLine("Hello");
             return trivForm.getWasPass();
         }
@@ -132,11 +130,18 @@ namespace WumpusTest2010
             return trivForm.getWasPass();
         }
 
+        //progresses trivia questions
+        //uses static counter and loops to front of trivia when nears end (counter hits 20)
         public void gotASetOfQuestionsAndAnswers()
         {
             numberWeAreOn++;
         }
 
+        //sometimes skips question in triviaForm depending on questions answered and forms opening, so pulls back counter
+        public void subtractOneFromNumberWeAreOn()
+        {
+            numberWeAreOn--;
+        }
 
     }
 }

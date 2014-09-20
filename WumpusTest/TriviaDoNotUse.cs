@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
+//DOESNT WORK... USE TriviaTry instead
 namespace WumpusTest2010
 {
     public class Trivia
